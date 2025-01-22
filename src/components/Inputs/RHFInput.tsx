@@ -1,11 +1,13 @@
 import { InputAdornment, TextField } from "@mui/material";
 import { Control, Controller, FieldPath, FieldValues } from "react-hook-form";
+import { CustomOnDistanceDataChange } from "../../types";
 
 type RHFInputProps<T extends FieldValues> = {
   adornment: string;
   control: Control<T>;
   label: string;
   name: FieldPath<T>;
+  onChange?: CustomOnDistanceDataChange;
 };
 
 export const RHFInput = <
@@ -15,6 +17,7 @@ export const RHFInput = <
   control,
   label,
   name,
+  onChange,
 }: RHFInputProps<T>) => {
   return (
     <Controller
@@ -22,6 +25,7 @@ export const RHFInput = <
       name={name}
       render={({ field }) => (
         <TextField
+          {...field}
           type="number"
           label={label}
           variant="outlined"
@@ -35,7 +39,7 @@ export const RHFInput = <
               ),
             },
           }}
-          {...field}
+          onChange={(e) => (onChange ? onChange(e) : field.onChange(e))}
         />
       )}
     />

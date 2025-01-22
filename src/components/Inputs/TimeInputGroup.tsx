@@ -1,21 +1,20 @@
 import { Box, FormControl, FormGroup } from "@mui/material";
 import { RHFInput } from "./RHFInput";
-import type { Control } from "react-hook-form";
-import { DistanceInputData } from "../../types";
+import type { Control, FieldValues, Path } from "react-hook-form";
 
-type TimeInputGroupProps = {
-  control: Control<DistanceInputData>;
+type TimeInputGroupProps<T extends FieldValues> = {
+  control: Control<T>;
   displayHoursInput?: boolean;
   label: string;
   namePrefix: string;
 };
 
-export const TimeInputGroup = ({
+export const TimeInputGroup = <T extends FieldValues>({
   control,
   displayHoursInput,
   label,
   namePrefix,
-}: TimeInputGroupProps) => {
+}: TimeInputGroupProps<T>) => {
   return (
     <FormGroup
       row
@@ -28,7 +27,7 @@ export const TimeInputGroup = ({
           <RHFInput
             adornment="hrs"
             label="Hours"
-            name={`${namePrefix}Hours` as keyof DistanceInputData}
+            name={`${namePrefix}Hours` as Path<T>}
             control={control}
           />
         )}
@@ -36,14 +35,14 @@ export const TimeInputGroup = ({
         <RHFInput
           adornment="min"
           label="Minutes"
-          name={`${namePrefix}Minutes` as keyof DistanceInputData}
+          name={`${namePrefix}Minutes` as Path<T>}
           control={control}
         />
 
         <RHFInput
           adornment="sec"
           label="Seconds"
-          name={`${namePrefix}Seconds` as keyof DistanceInputData}
+          name={`${namePrefix}Seconds` as Path<T>}
           control={control}
         />
       </Box>

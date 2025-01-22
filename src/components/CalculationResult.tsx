@@ -1,8 +1,8 @@
 import { Box, Typography } from "@mui/material";
 
-type TimeInputResultProps = { label: string; value: string };
+type CalculationResultProps = { label: string; value: string };
 
-export const TimeInputResult = ({ label, value }: TimeInputResultProps) => {
+export const CalculationResult = ({ label, value }: CalculationResultProps) => {
   return (
     <Box display="flex" justifyContent={"space-between"}>
       <Typography variant="h5">{label}</Typography>

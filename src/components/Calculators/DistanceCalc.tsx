@@ -1,6 +1,6 @@
 import { Button, Card, CardContent, Divider, Typography } from "@mui/material";
 import { TimeInputGroup } from "../Inputs/TimeInputGroup";
-import { TimeInputResult } from "../Inputs/TimeInputResult";
+import { CalculationResult } from "../CalculationResult";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { DistanceInputData } from "../../types";
@@ -56,7 +56,7 @@ export const DistanceCalc = () => {
           </Button>
 
           <Divider sx={{ my: 2 }} />
-          <TimeInputResult label="Distance you will cover:" value={result} />
+          <CalculationResult label="Distance you will cover:" value={result} />
         </form>
       </CardContent>
     </Card>
