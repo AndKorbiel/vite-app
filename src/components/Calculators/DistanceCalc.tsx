@@ -15,12 +15,14 @@ const distanceCalcFormInitialValues: DistanceInputData = {
 };
 
 export const DistanceCalc = () => {
-  const [result, setResult] = useState<string>("0km 0m");
+  const [result, setResult] = useState<string>("0 km 0 m");
 
-  const { control, handleSubmit } = useForm<DistanceInputData>({
+  const { control, handleSubmit, formState } = useForm<DistanceInputData>({
     defaultValues: distanceCalcFormInitialValues,
     mode: "all",
   });
+
+  console.log(formState);
 
   const onSubmit = (data: DistanceInputData) => {
     const result = calculateDistance(data);
@@ -37,7 +39,7 @@ export const DistanceCalc = () => {
         </Typography>
         <Divider sx={{ my: 2 }} />
 
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} data-test="distance-calc-form">
           <TimeInputGroup
             label="Planned running pace:"
             namePrefix="pace"

@@ -1,4 +1,5 @@
 import { ChangeEvent } from "react";
+import { TrainingUnitNumber } from "./constants";
 
 export type DistanceInputData = {
   paceMinutes: number;
@@ -29,3 +30,15 @@ export type CustomOnDistanceDataChange = (
     | AutocompleteOption[]
     | null
 ) => void;
+
+export type TrainingUnitData = {
+  plan: string;
+  result: string;
+};
+
+export type TrainingPlanData = {
+  [key in TrainingUnitNumber]?: TrainingUnitData;
+} & {
+  date: string;
+  weekId: number;
+};

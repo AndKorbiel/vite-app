@@ -42,11 +42,11 @@ declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Cypress {
     interface Chainable {
-      visitApp(): Chainable<void>;
+      visitApp(url?: string): Chainable<void>;
     }
   }
 }
 
-Cypress.Commands.add("visitApp", () => {
-  cy.visit("/");
+Cypress.Commands.add("visitApp", (url) => {
+  cy.visit(url ?? "/");
 });

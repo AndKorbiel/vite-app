@@ -1,7 +1,7 @@
 import { Box, FormControl, FormGroup, Typography } from "@mui/material";
 import { RHFInput } from "./RHFInput";
 import type { Control } from "react-hook-form";
-import { PaceInputData } from "../../types";
+import { CustomOnDistanceDataChange, PaceInputData } from "../../types";
 import { RHFAutocomplete } from "./RHFAutocomplete";
 import { runningDistanceOptions } from "../../constants";
 

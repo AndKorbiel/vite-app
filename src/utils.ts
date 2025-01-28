@@ -1,4 +1,10 @@
-import { DistanceInputData, PaceInputData } from "./types";
+import { TrainingUnitNumber } from "./constants";
+import {
+  DistanceInputData,
+  PaceInputData,
+  TrainingPlanData,
+  TrainingUnitData,
+} from "./types";
 
 export const calculateDistance = (data: DistanceInputData): string => {
   const pace = Number(data.paceMinutes * 60) + Number(data.paceSeconds);
@@ -12,7 +18,7 @@ export const calculateDistance = (data: DistanceInputData): string => {
   const distanceCm = Math.round((time / pace) * 1000 - distanceKm * 1000);
 
   if (isNaN(distanceKm) || isNaN(distanceCm)) {
-    return "0km 0m";
+    return "0 km 0 m";
   }
 
   return `${Math.floor(distanceKm)} km ${distanceCm} m`;
@@ -37,4 +43,25 @@ export const calculatePace = (data: PaceInputData): string => {
   }
 
   return "0:00 min / km";
+};
+
+export const sortTableData = (data: TrainingPlanData) => {
+  const sortOrder: Array<keyof TrainingPlanData> = [
+    "weekId",
+    "date",
+    TrainingUnitNumber.ONE,
+    TrainingUnitNumber.TWO,
+    TrainingUnitNumber.THREE,
+  ];
+
+  const sortedData: Record<
+    string,
+    TrainingUnitData | string | number | undefined
+  > = {};
+
+  sortOrder.forEach((key) => {
+    sortedData[key] = data[key];
+  });
+
+  return sortedData;
 };
