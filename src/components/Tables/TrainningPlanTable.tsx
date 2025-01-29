@@ -11,6 +11,7 @@ import {
 import { TrainingPlanData } from "../../types";
 import { TrainingUnitNumber } from "../../constants";
 import { useGenerateTabledData } from "./useGenerateTableData";
+import { useState } from "react";
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
@@ -21,7 +22,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const tableData: TrainingPlanData[] = [
+const initialTableData: TrainingPlanData[] = [
   {
     date: "12-19.01.2025",
     [TrainingUnitNumber.ONE]: {
@@ -36,7 +37,7 @@ const tableData: TrainingPlanData[] = [
     date: "20-26.01.2025",
     [TrainingUnitNumber.ONE]: {
       plan: "50 minut - 6:20 tempo - 7.8 km",
-      result: "",
+      result: "50 min - 6:10 - 7 km",
     },
     [TrainingUnitNumber.TWO]: { plan: "32 minuty - 6:00 - 5.3 km", result: "" },
     [TrainingUnitNumber.THREE]: { plan: "", result: "" },
@@ -76,6 +77,8 @@ const tableHeaders = [
 ];
 
 export const TrainningPlanTable = () => {
+  const [tableData] = useState<TrainingPlanData[]>(initialTableData);
+
   const { renderTableData } = useGenerateTabledData();
 
   return (

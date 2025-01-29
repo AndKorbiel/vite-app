@@ -2,6 +2,7 @@ import { Fragment } from "react/jsx-runtime";
 import { TrainingPlanData } from "../../types";
 import { sortTableData } from "../../utils";
 import { TableCell } from "@mui/material";
+import { Drawer } from "../Drawer";
 
 export const useGenerateTabledData = () => {
   const renderTableData = (data: TrainingPlanData) => {
@@ -12,7 +13,9 @@ export const useGenerateTabledData = () => {
         return (
           <Fragment key={i + trainingData.plan}>
             <TableCell>{trainingData.plan}</TableCell>
-            <TableCell>{trainingData.result}</TableCell>
+            <TableCell>
+              {trainingData.result !== "" ? trainingData.result : <Drawer />}
+            </TableCell>
           </Fragment>
         );
       } else {

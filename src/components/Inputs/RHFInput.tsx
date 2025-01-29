@@ -5,9 +5,11 @@ import { CustomOnDistanceDataChange } from "../../types";
 type RHFInputProps<T extends FieldValues> = {
   adornment: string;
   control: Control<T>;
+  fullWidth?: boolean;
   label: string;
   name: FieldPath<T>;
   onChange?: CustomOnDistanceDataChange;
+  stringType?: boolean;
 };
 
 export const RHFInput = <
@@ -15,9 +17,11 @@ export const RHFInput = <
 >({
   adornment,
   control,
+  fullWidth,
   label,
   name,
   onChange,
+  stringType,
 }: RHFInputProps<T>) => {
   return (
     <Controller
@@ -26,10 +30,10 @@ export const RHFInput = <
       render={({ field }) => (
         <TextField
           {...field}
-          type="number"
+          type={stringType ? "string" : "number"}
           label={label}
           variant="outlined"
-          sx={{ m: 1, width: "25%" }}
+          sx={{ m: 1, width: fullWidth ? "100%" : "25%" }}
           slotProps={{
             input: {
               startAdornment: (
