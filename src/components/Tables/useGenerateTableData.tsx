@@ -8,20 +8,29 @@ export const useGenerateTabledData = () => {
   const renderTableData = (data: TrainingPlanData) => {
     const sortedData = sortTableData(data);
 
-    return Object.values(sortedData).map((trainingData, i) => {
-      if (typeof trainingData === "object") {
+    return Object.entries(sortedData).map((trainingData, i) => {
+      if (typeof trainingData[1] === "object") {
         return (
-          <Fragment key={i + trainingData.plan}>
-            <TableCell>{trainingData.plan}</TableCell>
+          <Fragment key={i + trainingData[1].plan}>
+            <TableCell>{trainingData[1].plan}</TableCell>
             <TableCell>
-              {trainingData.result !== "" ? trainingData.result : <Drawer />}
+              {trainingData[1].result !== "" ? (
+                trainingData[1].result
+              ) : (
+                <Drawer
+                  data={{
+                    rowId: trainingData[0],
+                    weekId: sortedData.weekId as number,
+                  }}
+                />
+              )}
             </TableCell>
           </Fragment>
         );
       } else {
         return (
           <TableCell key={trainingData?.toString() + i.toString()}>
-            {trainingData}
+            {trainingData[1]}
           </TableCell>
         );
       }

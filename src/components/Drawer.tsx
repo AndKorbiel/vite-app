@@ -9,7 +9,11 @@ const StyledDrawer = styled(MuiDrawer)(() => ({
   },
 }));
 
-export const Drawer = () => {
+type DrawerProps = {
+  data: { rowId: string; weekId: number };
+};
+
+export const Drawer = ({ data }: DrawerProps) => {
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -25,7 +29,7 @@ export const Drawer = () => {
         sx={{ width: "300px" }}
         PaperProps={{ sx: { width: "300px", p: "2em" } }}
       >
-        <DrawerInputGroup />
+        <DrawerInputGroup data={data} />
       </StyledDrawer>
     </>
   );

@@ -17,12 +17,10 @@ const distanceCalcFormInitialValues: DistanceInputData = {
 export const DistanceCalc = () => {
   const [result, setResult] = useState<string>("0 km 0 m");
 
-  const { control, handleSubmit, formState } = useForm<DistanceInputData>({
+  const { control, handleSubmit } = useForm<DistanceInputData>({
     defaultValues: distanceCalcFormInitialValues,
     mode: "all",
   });
-
-  console.log(formState);
 
   const onSubmit = (data: DistanceInputData) => {
     const result = calculateDistance(data);
