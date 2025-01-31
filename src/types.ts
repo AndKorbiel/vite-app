@@ -38,9 +38,16 @@ export type CustomOnDistanceDataChange = (
     | null
 ) => void;
 
+export type TrainingUnitDataDetails = {
+  distance: { kilometers: number; meters: number };
+  pace: { minutes: number; seconds: number };
+  pulse: number;
+  time: { hours: number; minutes: number; seconds: number };
+};
+
 export type TrainingUnitData = {
-  plan: string;
-  result: string;
+  plan: Omit<TrainingUnitDataDetails, "pulse"> | null;
+  result: TrainingUnitDataDetails | null;
 };
 
 export type TrainingPlanData = {

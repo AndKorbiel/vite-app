@@ -3,6 +3,7 @@ import { TrainingPlanData } from "../../types";
 import { sortTableData } from "../../utils";
 import { TableCell } from "@mui/material";
 import { Drawer } from "../Drawer";
+import { DataCell } from "./DataCell";
 
 export const useGenerateTabledData = () => {
   const renderTableData = (data: TrainingPlanData) => {
@@ -11,11 +12,11 @@ export const useGenerateTabledData = () => {
     return Object.entries(sortedData).map((trainingData, i) => {
       if (typeof trainingData[1] === "object") {
         return (
-          <Fragment key={i + trainingData[1].plan}>
-            <TableCell>{trainingData[1].plan}</TableCell>
+          <Fragment key={i + trainingData[0]}>
+            <DataCell data={trainingData[1].plan} />
             <TableCell>
-              {trainingData[1].result !== "" ? (
-                trainingData[1].result
+              {trainingData[1].result ? (
+                <DataCell data={trainingData[1].result} />
               ) : (
                 <Drawer
                   data={{

@@ -28,7 +28,7 @@ export const DistanceCalc = () => {
   };
 
   return (
-    <Card>
+    <Card sx={{ mb: 4 }}>
       <CardContent>
         <Typography variant="h4">Distance Calculator</Typography>
         <Typography>
