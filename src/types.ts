@@ -19,10 +19,14 @@ export type PaceInputData = {
 };
 
 export type TrainingInputData = {
-  distance: string;
-  pace: string;
-  pulse: string;
-  time: string;
+  distanceKilometers: number;
+  distanceMeters: number;
+  paceMinutes: number;
+  paceSeconds: number;
+  pulse: number;
+  timeHours: number;
+  timeMinutes: number;
+  timeSeconds: number;
 };
 
 export type AutocompleteOption = {

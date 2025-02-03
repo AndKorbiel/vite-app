@@ -5,6 +5,7 @@ import type { Control, FieldValues, Path } from "react-hook-form";
 type TimeInputGroupProps<T extends FieldValues> = {
   control: Control<T>;
   displayHoursInput?: boolean;
+  fullWidth?: boolean;
   label: string;
   namePrefix: string;
 };
@@ -12,6 +13,7 @@ type TimeInputGroupProps<T extends FieldValues> = {
 export const TimeInputGroup = <T extends FieldValues>({
   control,
   displayHoursInput,
+  fullWidth = false,
   label,
   namePrefix,
 }: TimeInputGroupProps<T>) => {
@@ -29,6 +31,7 @@ export const TimeInputGroup = <T extends FieldValues>({
             label="Hours"
             name={`${namePrefix}Hours` as Path<T>}
             control={control}
+            fullWidth={fullWidth}
           />
         )}
 
@@ -37,6 +40,7 @@ export const TimeInputGroup = <T extends FieldValues>({
           label="Minutes"
           name={`${namePrefix}Minutes` as Path<T>}
           control={control}
+          fullWidth={fullWidth}
         />
 
         <RHFInput
@@ -44,6 +48,7 @@ export const TimeInputGroup = <T extends FieldValues>({
           label="Seconds"
           name={`${namePrefix}Seconds` as Path<T>}
           control={control}
+          fullWidth={fullWidth}
         />
       </Box>
     </FormGroup>

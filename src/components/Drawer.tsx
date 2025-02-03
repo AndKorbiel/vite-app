@@ -27,7 +27,7 @@ export const Drawer = ({ data }: DrawerProps) => {
         open={open}
         onClose={toggleDrawer(false)}
         sx={{ width: "300px" }}
-        PaperProps={{ sx: { width: "300px", p: "2em" } }}
+        PaperProps={{ sx: { width: "450px", p: "2em" } }}
       >
         <DrawerInputGroup data={data} />
       </StyledDrawer>

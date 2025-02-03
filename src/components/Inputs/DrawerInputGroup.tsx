@@ -1,16 +1,23 @@
 import { Button, Divider, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { TrainingInputData } from "../../types";
-import { RHFInput } from "./RHFInput";
 import { useAppDispatch } from "../../store/hooks";
 import { addTrainingData } from "../../store/trainingDataSlice";
 import { TrainingUnitNumber } from "../../constants";
+import { TimeInputGroup } from "./TimeInputGroup";
+import { DistanceInputGroup } from "./DistanceInputGroup";
+import { RHFInput } from "./RHFInput";
+import { transferDrawerFormData } from "../../utils";
 
 const trainingFormInitialValues: TrainingInputData = {
-  distance: "",
-  pace: "",
-  pulse: "",
-  time: "",
+  distanceKilometers: 0,
+  distanceMeters: 0,
+  paceMinutes: 0,
+  paceSeconds: 0,
+  pulse: 0,
+  timeHours: 0,
+  timeMinutes: 0,
+  timeSeconds: 0,
 };
 
 type DrawerInputGroupProps = {
@@ -26,8 +33,7 @@ export const DrawerInputGroup = ({ data }: DrawerInputGroupProps) => {
   const dispatch = useAppDispatch();
 
   const onFormSubmit = (formData: TrainingInputData) => {
-    const { distance, pace, pulse, time } = formData;
-    const dataOutput = `Distance: ${distance}, Pace: ${pace}, Pulse: ${pulse}, Time: ${time}`;
+    const dataOutput = transferDrawerFormData(formData);
 
     dispatch(
       addTrainingData({
@@ -44,31 +50,25 @@ export const DrawerInputGroup = ({ data }: DrawerInputGroupProps) => {
       <Divider sx={{ mb: 2 }} />
 
       <form onSubmit={handleSubmit(onFormSubmit)}>
-        <RHFInput
-          adornment="h:mm"
+        <TimeInputGroup
           control={control}
           label="Time"
-          name="time"
+          namePrefix="time"
+          displayHoursInput
           fullWidth
-          stringType
         />
 
-        <RHFInput
-          adornment="min/km"
-          control={control}
-          label="Pace"
-          name="pace"
-          fullWidth
-          stringType
-        />
-
-        <RHFInput
-          adornment="km"
+        <DistanceInputGroup
           control={control}
           label="Distance"
-          name="distance"
+          namePrefix="distance"
+        />
+
+        <TimeInputGroup
+          control={control}
+          label="Pace"
+          namePrefix="pace"
           fullWidth
-          stringType
         />
 
         <RHFInput

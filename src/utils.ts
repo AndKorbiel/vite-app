@@ -2,8 +2,10 @@ import { TrainingUnitNumber } from "./constants";
 import {
   DistanceInputData,
   PaceInputData,
+  TrainingInputData,
   TrainingPlanData,
   TrainingUnitData,
+  TrainingUnitDataDetails,
 } from "./types";
 
 export const calculateDistance = (data: DistanceInputData): string => {
@@ -64,4 +66,36 @@ export const sortTableData = (data: TrainingPlanData) => {
   });
 
   return sortedData;
+};
+
+export const transferDrawerFormData = (
+  formData: TrainingInputData
+): TrainingUnitDataDetails => {
+  const {
+    distanceKilometers,
+    distanceMeters,
+    paceMinutes,
+    paceSeconds,
+    pulse,
+    timeHours,
+    timeMinutes,
+    timeSeconds,
+  } = formData;
+
+  return {
+    distance: {
+      kilometers: distanceKilometers,
+      meters: distanceMeters,
+    },
+    pace: {
+      minutes: paceMinutes,
+      seconds: paceSeconds,
+    },
+    pulse: pulse,
+    time: {
+      hours: timeHours,
+      minutes: timeMinutes,
+      seconds: timeSeconds,
+    },
+  };
 };

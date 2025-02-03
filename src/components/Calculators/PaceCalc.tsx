@@ -60,6 +60,7 @@ export const PaceCalc = () => {
             label="Planned distance:"
             namePrefix="distance"
             onChange={onDistanceDataChange}
+            displayDistanceOptions
           />
 
           <TimeInputGroup
