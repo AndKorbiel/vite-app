@@ -7,11 +7,8 @@ import { DistanceInputData } from "../../types";
 import { calculateDistance } from "../../utils";
 
 const distanceCalcFormInitialValues: DistanceInputData = {
-  paceMinutes: 0,
-  paceSeconds: 0,
-  timeHours: 0,
-  timeMinutes: 0,
-  timeSeconds: 0,
+  pace: { minutes: 0, seconds: 0 },
+  time: { hours: 0, minutes: 0, seconds: 0 },
 };
 
 export const DistanceCalc = () => {

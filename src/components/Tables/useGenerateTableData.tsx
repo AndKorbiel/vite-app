@@ -13,19 +13,33 @@ export const useGenerateTabledData = () => {
       if (typeof trainingData[1] === "object") {
         return (
           <Fragment key={i + trainingData[0]}>
-            <DataCell data={trainingData[1].plan} />
-            <TableCell>
-              {trainingData[1].result ? (
-                <DataCell data={trainingData[1].result} />
-              ) : (
+            <DataCell
+              trainingUnitData={{
+                data: trainingData[1].plan,
+                rowId: trainingData[0],
+                weekId: sortedData.weekId as number,
+              }}
+            />
+            {trainingData[1].result ? (
+              <DataCell
+                showEditButton
+                trainingUnitData={{
+                  data: trainingData[1].result,
+                  rowId: trainingData[0],
+                  weekId: sortedData.weekId as number,
+                }}
+              />
+            ) : (
+              <TableCell>
                 <Drawer
                   data={{
+                    data: null,
                     rowId: trainingData[0],
                     weekId: sortedData.weekId as number,
                   }}
                 />
-              )}
-            </TableCell>
+              </TableCell>
+            )}
           </Fragment>
         );
       } else {

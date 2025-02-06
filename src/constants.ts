@@ -1,4 +1,4 @@
-import { TrainingPlanData } from "./types";
+import { TrainingPlanData, TrainingUnitDataDetails } from "./types";
 
 export const runningDistanceOptions = [
   { id: 5, label: "5 km" },
@@ -21,7 +21,6 @@ export const initialTableData: TrainingPlanData[] = [
   {
     date: "12-19.01.2025",
     [TrainingUnitNumber.ONE]: {
-      // plan: "45 minut - 6:20 tempo - 7.1 km",
       plan: {
         distance: { kilometers: 7, meters: 100 },
         pace: { minutes: 6, seconds: 20 },
@@ -30,7 +29,6 @@ export const initialTableData: TrainingPlanData[] = [
       result: null,
     },
     [TrainingUnitNumber.TWO]: {
-      // plan: "30 minut - 6:00 - 5 km",
       plan: {
         distance: { kilometers: 5, meters: 0 },
         pace: { minutes: 6, seconds: 0 },
@@ -75,3 +73,10 @@ export const initialTableData: TrainingPlanData[] = [
   //   weekId: 4,
   // },
 ];
+
+export const trainingFormInitialValues: TrainingUnitDataDetails = {
+  distance: { kilometers: 0, meters: 0 },
+  pace: { minutes: 0, seconds: 0 },
+  pulse: 0,
+  time: { hours: 0, minutes: 0, seconds: 0 },
+};

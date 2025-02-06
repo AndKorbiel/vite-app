@@ -2,31 +2,14 @@ import { ChangeEvent } from "react";
 import { TrainingUnitNumber } from "./constants";
 
 export type DistanceInputData = {
-  paceMinutes: number;
-  paceSeconds: number;
-  timeHours: number;
-  timeMinutes: number;
-  timeSeconds: number;
+  pace: { minutes: number; seconds: number };
+  time: { hours: number; minutes: number; seconds: number };
 };
 
 export type PaceInputData = {
-  distanceKilometers: number;
-  distanceMeters: number;
+  distance: { kilometers: number; meters: number };
   distanceSelectedValue: AutocompleteOption;
-  timeHours: number;
-  timeMinutes: number;
-  timeSeconds: number;
-};
-
-export type TrainingInputData = {
-  distanceKilometers: number;
-  distanceMeters: number;
-  paceMinutes: number;
-  paceSeconds: number;
-  pulse: number;
-  timeHours: number;
-  timeMinutes: number;
-  timeSeconds: number;
+  time: { hours: number; minutes: number; seconds: number };
 };
 
 export type AutocompleteOption = {
@@ -58,5 +41,11 @@ export type TrainingPlanData = {
   [key in TrainingUnitNumber]?: TrainingUnitData;
 } & {
   date: string;
+  weekId: number;
+};
+
+export type TrainingUnitDrawerFormData = {
+  data: Partial<TrainingUnitDataDetails> | null;
+  rowId: string;
   weekId: number;
 };

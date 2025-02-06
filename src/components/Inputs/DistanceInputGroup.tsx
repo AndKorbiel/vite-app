@@ -45,7 +45,7 @@ export const DistanceInputGroup = <T extends FieldValues>({
         <RHFInput
           adornment="km"
           label="Kilometers"
-          name={`${namePrefix}Kilometers` as Path<T>}
+          name={`${namePrefix}.kilometers` as Path<T>}
           control={control}
           onChange={onChange}
         />
@@ -53,7 +53,7 @@ export const DistanceInputGroup = <T extends FieldValues>({
         <RHFInput
           adornment="m"
           label="Meters"
-          name={`${namePrefix}Meters` as Path<T>}
+          name={`${namePrefix}.meters` as Path<T>}
           control={control}
           onChange={onChange}
         />

@@ -1,8 +1,10 @@
 import { Box, TableCell, Typography } from "@mui/material";
-import { TrainingUnitDataDetails } from "../../types";
+import { TrainingUnitDrawerFormData } from "../../types";
+import { useDisplayEditButton } from "./useDisplayEditButton";
 
 type DataCellProps = {
-  data: Partial<TrainingUnitDataDetails> | null;
+  showEditButton?: boolean;
+  trainingUnitData: TrainingUnitDrawerFormData;
 };
 
 const renderPlaceHolderLabel = (label?: string) => (
@@ -18,10 +20,17 @@ const getValueOrDefault = (value?: number) => {
   return value === 0 ? "00" : value;
 };
 
-export const DataCell = ({ data }: DataCellProps) => {
-  if (!data) return <TableCell>{renderPlaceHolderLabel()}</TableCell>;
+export const DataCell = ({
+  showEditButton,
+  trainingUnitData,
+}: DataCellProps) => {
+  const { EditButton, handleMouseEnter, handleMouseLeave } =
+    useDisplayEditButton();
 
-  const { distance, pace, pulse, time } = data;
+  if (!trainingUnitData.data)
+    return <TableCell>{renderPlaceHolderLabel()}</TableCell>;
+
+  const { distance, pace, pulse, time } = trainingUnitData.data;
 
   const timeValue = `${getValueOrDefault(time?.hours)}:${getValueOrDefault(
     time?.minutes
@@ -43,7 +52,11 @@ export const DataCell = ({ data }: DataCellProps) => {
   };
 
   return (
-    <TableCell>
+    <TableCell
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      sx={{ position: "relative" }}
+    >
       {Object.entries(valuesMap).map(([key, { label, value }]) => (
         <Box key={key} sx={{ mt: 0.5, mb: 0.5 }}>
           {value ? (
@@ -58,6 +71,8 @@ export const DataCell = ({ data }: DataCellProps) => {
           )}
         </Box>
       ))}
+
+      {showEditButton && <EditButton trainingUnitData={trainingUnitData} />}
     </TableCell>
   );
 };

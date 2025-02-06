@@ -1,45 +1,38 @@
 import { Button, Divider, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
-import { TrainingInputData } from "../../types";
+import {
+  TrainingUnitDataDetails,
+  TrainingUnitDrawerFormData,
+} from "../../types";
 import { useAppDispatch } from "../../store/hooks";
 import { addTrainingData } from "../../store/trainingDataSlice";
-import { TrainingUnitNumber } from "../../constants";
+import { trainingFormInitialValues, TrainingUnitNumber } from "../../constants";
 import { TimeInputGroup } from "./TimeInputGroup";
 import { DistanceInputGroup } from "./DistanceInputGroup";
 import { RHFInput } from "./RHFInput";
-import { transferDrawerFormData } from "../../utils";
-
-const trainingFormInitialValues: TrainingInputData = {
-  distanceKilometers: 0,
-  distanceMeters: 0,
-  paceMinutes: 0,
-  paceSeconds: 0,
-  pulse: 0,
-  timeHours: 0,
-  timeMinutes: 0,
-  timeSeconds: 0,
-};
 
 type DrawerInputGroupProps = {
-  data: { rowId: string; weekId: number };
+  onClose: () => void;
+  trainingData: TrainingUnitDrawerFormData;
 };
 
-export const DrawerInputGroup = ({ data }: DrawerInputGroupProps) => {
-  const { control, handleSubmit } = useForm<TrainingInputData>({
-    defaultValues: trainingFormInitialValues,
+export const DrawerInputGroup = ({
+  onClose,
+  trainingData,
+}: DrawerInputGroupProps) => {
+  const { control, handleSubmit } = useForm<TrainingUnitDataDetails>({
+    defaultValues: trainingData.data ?? trainingFormInitialValues,
     mode: "all",
   });
 
   const dispatch = useAppDispatch();
 
-  const onFormSubmit = (formData: TrainingInputData) => {
-    const dataOutput = transferDrawerFormData(formData);
-
+  const onFormSubmit = (formData: TrainingUnitDataDetails) => {
     dispatch(
       addTrainingData({
-        result: dataOutput,
-        trainingUnit: data.rowId as TrainingUnitNumber,
-        weekId: data.weekId,
+        result: formData,
+        trainingUnit: trainingData.rowId as TrainingUnitNumber,
+        weekId: trainingData.weekId,
       })
     );
   };
@@ -79,6 +72,10 @@ export const DrawerInputGroup = ({ data }: DrawerInputGroupProps) => {
           fullWidth
           stringType
         />
+
+        <Button sx={{ mt: 2, mr: 1 }} onClick={onClose}>
+          Cancel
+        </Button>
 
         <Button type="submit" variant="contained" sx={{ mt: 2 }}>
           Submit

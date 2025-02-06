@@ -4,7 +4,7 @@ import { initialTableData, TrainingUnitNumber } from "../constants";
 import { TrainingUnitDataDetails } from "../types";
 
 type TrainingResultPayload = {
-  result: TrainingUnitDataDetails;
+  result: TrainingUnitDataDetails | null;
   trainingUnit: TrainingUnitNumber;
   weekId: number;
 };

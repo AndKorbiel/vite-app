@@ -29,7 +29,7 @@ export const TimeInputGroup = <T extends FieldValues>({
           <RHFInput
             adornment="hrs"
             label="Hours"
-            name={`${namePrefix}Hours` as Path<T>}
+            name={`${namePrefix}.hours` as Path<T>}
             control={control}
             fullWidth={fullWidth}
           />
@@ -38,7 +38,7 @@ export const TimeInputGroup = <T extends FieldValues>({
         <RHFInput
           adornment="min"
           label="Minutes"
-          name={`${namePrefix}Minutes` as Path<T>}
+          name={`${namePrefix}.minutes` as Path<T>}
           control={control}
           fullWidth={fullWidth}
         />
@@ -46,7 +46,7 @@ export const TimeInputGroup = <T extends FieldValues>({
         <RHFInput
           adornment="sec"
           label="Seconds"
-          name={`${namePrefix}Seconds` as Path<T>}
+          name={`${namePrefix}.seconds` as Path<T>}
           control={control}
           fullWidth={fullWidth}
         />

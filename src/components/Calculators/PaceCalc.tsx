@@ -1,5 +1,5 @@
 import { Button, Card, CardContent, Divider, Typography } from "@mui/material";
-import { useForm } from "react-hook-form";
+import { Path, useForm } from "react-hook-form";
 import { CustomOnDistanceDataChange, PaceInputData } from "../../types";
 import { DistanceInputGroup } from "../Inputs/DistanceInputGroup";
 import { TimeInputGroup } from "../Inputs/TimeInputGroup";
@@ -8,12 +8,9 @@ import { calculatePace } from "../../utils";
 import { useState } from "react";
 
 const paceCalcFormInitialValues = {
-  distanceKilometers: 0,
-  distanceMeters: 0,
+  distance: { kilometers: 0, meters: 0 },
   distanceSelectedValue: { label: "", id: 0 },
-  timeHours: 0,
-  timeMinutes: 0,
-  timeSeconds: 0,
+  time: { hours: 0, minutes: 0, seconds: 0 },
 };
 
 export const PaceCalc = () => {
@@ -33,11 +30,11 @@ export const PaceCalc = () => {
   const onDistanceDataChange: CustomOnDistanceDataChange = (inputData) => {
     if (inputData && "id" in inputData) {
       setValue("distanceSelectedValue", inputData);
-      resetField("distanceKilometers");
-      resetField("distanceMeters");
+      resetField("distance.kilometers");
+      resetField("distance.meters");
     } else if (inputData && "target" in inputData) {
       setValue(
-        inputData.target.name as keyof PaceInputData,
+        inputData.target.name as Path<PaceInputData>,
         Number(inputData.target.value)
       );
       resetField("distanceSelectedValue");
