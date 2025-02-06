@@ -1,10 +1,10 @@
 import { Fragment } from "react/jsx-runtime";
 import { TableCell } from "@mui/material";
 
-import { sortTableData } from "../../utils";
-import { Drawer } from "../Drawer";
-import { DataCell } from "./DataCell";
-import { TrainingUnitData } from "../../types/main";
+import { sortTableData } from "../../../utils";
+import { TrainingPlanTableDrawer } from "./TrainingPlanTableDrawer/TrainingPlanTableDrawer";
+import { DataCell } from "./DataCell/DataCell";
+import { TrainingUnitData } from "../../../types/main";
 
 export const useGenerateTabledData = () => {
   const renderTableData = (data: TrainingUnitData) => {
@@ -32,7 +32,7 @@ export const useGenerateTabledData = () => {
               />
             ) : (
               <TableCell>
-                <Drawer
+                <TrainingPlanTableDrawer
                   data={{
                     data: null,
                     rowId: trainingData[0],

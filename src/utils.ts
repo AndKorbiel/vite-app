@@ -1,6 +1,6 @@
 import { TrainingUnitNumber } from "./constants";
 import { DistanceInputData, PaceInputData } from "./types/inputsData";
-import { TrainingUnitData, TrainingData } from "./types/main";
+import { TrainingUnitData, TrainingData, TrainingDetails } from "./types/main";
 
 export const calculateDistance = (data: DistanceInputData): string => {
   const { pace: givenPace, time: givenTime } = data;
@@ -64,4 +64,33 @@ export const sortTableData = (data: TrainingUnitData) => {
   });
 
   return sortedData;
+};
+
+const getValueOrDefault = (value?: number) => {
+  return value === 0 ? "00" : value;
+};
+
+export const generateTableDataMap = (
+  trainingData: Partial<TrainingDetails>
+) => {
+  const { distance, pace, pulse, time } = trainingData;
+
+  const timeValue = `${getValueOrDefault(time?.hours)}:${getValueOrDefault(
+    time?.minutes
+  )}:${getValueOrDefault(time?.seconds)} h`;
+
+  const distanceValue = `${distance?.kilometers} km ${distance?.meters} m`;
+
+  const paceValue = `${pace?.minutes}:${getValueOrDefault(
+    pace?.seconds
+  )} min / km`;
+
+  const pulseValue = pulse ? `${pulse} bpm` : null;
+
+  return {
+    time: { label: "Time", value: timeValue },
+    distance: { label: "Distance", value: distanceValue },
+    pace: { label: "Pace", value: paceValue },
+    pulse: { label: "Pulse", value: pulseValue },
+  };
 };

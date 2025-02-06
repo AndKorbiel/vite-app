@@ -80,3 +80,14 @@ export const trainingFormInitialValues: TrainingDetails = {
   pulse: 0,
   time: { hours: 0, minutes: 0, seconds: 0 },
 };
+
+export const trainingPlanTableHeaders = [
+  "Week #",
+  "Date",
+  "1st training - plan",
+  "1st training - result",
+  "2nd training - plan",
+  "2nd training - result",
+  "3rd training - plan",
+  "3rd training - result",
+];

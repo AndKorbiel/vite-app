@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import { Drawer } from "../Drawer";
-import { TrainingUnitDrawerFormData } from "../../types/inputsData";
+import { TrainingPlanTableDrawer } from "./TrainingPlanTableDrawer/TrainingPlanTableDrawer";
+import { TrainingUnitDrawerFormData } from "../../../types/inputsData";
 
 type EditButtonProps = {
   TrainingData: TrainingUnitDrawerFormData;
@@ -21,7 +21,7 @@ export const useDisplayEditButton = () => {
   const EditButton = ({ TrainingData }: EditButtonProps) => {
     return (
       isHovered && (
-        <Drawer
+        <TrainingPlanTableDrawer
           data={{
             data: TrainingData.data,
             rowId: TrainingData.rowId,

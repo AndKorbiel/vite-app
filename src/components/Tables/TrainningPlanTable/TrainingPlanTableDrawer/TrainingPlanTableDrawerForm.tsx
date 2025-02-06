@@ -1,21 +1,24 @@
 import { Button, Divider, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 
-import { useAppDispatch } from "../../store/hooks";
-import { addTrainingData } from "../../store/trainingDataSlice";
-import { TrainingUnitDrawerFormData } from "../../types/inputsData";
-import { TrainingDetails } from "../../types/main";
-import { trainingFormInitialValues, TrainingUnitNumber } from "../../constants";
-import { TimeInputGroup } from "./TimeInputGroup";
-import { DistanceInputGroup } from "./DistanceInputGroup";
-import { RHFInput } from "./Inputs/RHFInput";
+import { useAppDispatch } from "../../../../store/hooks";
+import { addTrainingData } from "../../../../store/trainingDataSlice";
+import { TrainingUnitDrawerFormData } from "../../../../types/inputsData";
+import { TrainingDetails } from "../../../../types/main";
+import {
+  trainingFormInitialValues,
+  TrainingUnitNumber,
+} from "../../../../constants";
+import { TimeInputGroup } from "../../../Forms/TimeInputGroup";
+import { DistanceInputGroup } from "../../../Forms/DistanceInputGroup";
+import { RHFInput } from "../../../Forms/Inputs/RHFInput";
 
 type DrawerInputGroupProps = {
   onClose: () => void;
   trainingData: TrainingUnitDrawerFormData;
 };
 
-export const DrawerInputGroup = ({
+export const TrainingPlanTableDrawerForm = ({
   onClose,
   trainingData,
 }: DrawerInputGroupProps) => {

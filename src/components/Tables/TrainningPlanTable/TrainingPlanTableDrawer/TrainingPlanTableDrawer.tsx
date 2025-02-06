@@ -1,12 +1,12 @@
 import { Box, Button, Drawer as MuiDrawer, styled } from "@mui/material";
 import { useState } from "react";
 
-import { AlertDialog } from "./AlertDialog";
-import { DrawerInputGroup } from "./Forms/DrawerInputGroup";
-import { useAppDispatch } from "../store/hooks";
-import { addTrainingData } from "../store/trainingDataSlice";
-import { TrainingUnitNumber } from "../constants";
-import { TrainingUnitDrawerFormData } from "../types/inputsData";
+import { AlertDialog } from "../../../AlertDialog";
+import { useAppDispatch } from "../../../../store/hooks";
+import { addTrainingData } from "../../../../store/trainingDataSlice";
+import { TrainingUnitNumber } from "../../../../constants";
+import { TrainingUnitDrawerFormData } from "../../../../types/inputsData";
+import { TrainingPlanTableDrawerForm } from "./TrainingPlanTableDrawerForm";
 
 const StyledDrawer = styled(MuiDrawer)(() => ({
   width: "300px",
@@ -23,13 +23,17 @@ const onHoverStyles = {
   p: 0.5,
 };
 
-type DrawerProps = {
+type TrainingPlanTableDrawerProps = {
   data: TrainingUnitDrawerFormData;
   displayOnOhver?: boolean;
   label?: string;
 };
 
-export const Drawer = ({ data, displayOnOhver, label }: DrawerProps) => {
+export const TrainingPlanTableDrawer = ({
+  data,
+  displayOnOhver,
+  label,
+}: TrainingPlanTableDrawerProps) => {
   const dispatch = useAppDispatch();
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [isAlertDialogOpen, setAlertDialogOpen] = useState(false);
@@ -84,7 +88,10 @@ export const Drawer = ({ data, displayOnOhver, label }: DrawerProps) => {
         sx={{ width: "300px" }}
         PaperProps={{ sx: { width: "450px", p: "2em" } }}
       >
-        <DrawerInputGroup trainingData={data} onClose={toggleDrawer(false)} />
+        <TrainingPlanTableDrawerForm
+          trainingData={data}
+          onClose={toggleDrawer(false)}
+        />
       </StyledDrawer>
     </>
   );
