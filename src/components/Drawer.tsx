@@ -2,7 +2,7 @@ import { Box, Button, Drawer as MuiDrawer, styled } from "@mui/material";
 import { useState } from "react";
 
 import { AlertDialog } from "./AlertDialog";
-import { DrawerInputGroup } from "./Inputs/DrawerInputGroup";
+import { DrawerInputGroup } from "./Forms/DrawerInputGroup";
 import { useAppDispatch } from "../store/hooks";
 import { addTrainingData } from "../store/trainingDataSlice";
 import { TrainingUnitNumber } from "../constants";

@@ -3,7 +3,7 @@ import { Control, Controller, FieldPath, FieldValues } from "react-hook-form";
 import {
   AutocompleteOption,
   DistanceCalcOnChange,
-} from "../../types/inputsData";
+} from "../../../types/inputsData";
 
 type RHFAutocompleteProps<T extends FieldValues> = {
   control: Control<T>;

@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Card, CardContent, Divider, Typography } from "@mui/material";
 
-import { TimeInputGroup } from "../Inputs/TimeInputGroup";
+import { TimeInputGroup } from "../Forms/TimeInputGroup";
 import { CalculationResult } from "../CalculationResult";
 import { calculateDistance } from "../../utils";
 import { DistanceInputData } from "../../types/inputsData";

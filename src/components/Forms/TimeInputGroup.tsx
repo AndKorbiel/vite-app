@@ -1,5 +1,5 @@
 import { Box, FormControl, FormGroup } from "@mui/material";
-import { RHFInput } from "./RHFInput";
+import { RHFInput } from "./Inputs/RHFInput";
 import type { Control, FieldValues, Path } from "react-hook-form";
 
 type TimeInputGroupProps<T extends FieldValues> = {

@@ -2,8 +2,8 @@ import { Button, Card, CardContent, Divider, Typography } from "@mui/material";
 import { useState } from "react";
 import { Path, useForm } from "react-hook-form";
 
-import { DistanceInputGroup } from "../Inputs/DistanceInputGroup";
-import { TimeInputGroup } from "../Inputs/TimeInputGroup";
+import { DistanceInputGroup } from "../Forms/DistanceInputGroup";
+import { TimeInputGroup } from "../Forms/TimeInputGroup";
 import { CalculationResult } from "../CalculationResult";
 import { calculatePace } from "../../utils";
 import { DistanceCalcOnChange, PaceInputData } from "../../types/inputsData";

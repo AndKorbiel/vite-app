@@ -1,6 +1,6 @@
 import { InputAdornment, TextField } from "@mui/material";
 import { Control, Controller, FieldPath, FieldValues } from "react-hook-form";
-import { DistanceCalcOnChange } from "../../types/inputsData";
+import { DistanceCalcOnChange } from "../../../types/inputsData";
 
 type RHFInputProps<T extends FieldValues> = {
   adornment: string;

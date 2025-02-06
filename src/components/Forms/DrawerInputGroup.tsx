@@ -8,7 +8,7 @@ import { TrainingDetails } from "../../types/main";
 import { trainingFormInitialValues, TrainingUnitNumber } from "../../constants";
 import { TimeInputGroup } from "./TimeInputGroup";
 import { DistanceInputGroup } from "./DistanceInputGroup";
-import { RHFInput } from "./RHFInput";
+import { RHFInput } from "./Inputs/RHFInput";
 
 type DrawerInputGroupProps = {
   onClose: () => void;
