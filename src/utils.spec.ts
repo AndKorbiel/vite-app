@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { calculateDistance, calculatePace } from "./utils";
-import { PaceInputData } from "./types";
+import { PaceInputData } from "./types/inputsData";
 
 describe("calculateDistance", () => {
   it('should return "0km 0m" when all inputs are 0', () => {

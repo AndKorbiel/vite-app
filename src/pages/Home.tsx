@@ -1,4 +1,5 @@
 import { Container } from "@mui/material";
+
 import { TrainningPlanTable } from "../components/Tables/TrainningPlanTable";
 
 export const Home = () => {

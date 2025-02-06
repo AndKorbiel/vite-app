@@ -1,6 +1,7 @@
 import { Toolbar, Typography } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import { Link } from "react-router-dom";
+
 import { routesConfig } from "../routes/config";
 
 export const Navbar = () => {

@@ -1,11 +1,10 @@
 import { Button, Divider, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
-import {
-  TrainingUnitDataDetails,
-  TrainingUnitDrawerFormData,
-} from "../../types";
+
 import { useAppDispatch } from "../../store/hooks";
 import { addTrainingData } from "../../store/trainingDataSlice";
+import { TrainingUnitDrawerFormData } from "../../types/inputsData";
+import { TrainingDetails } from "../../types/main";
 import { trainingFormInitialValues, TrainingUnitNumber } from "../../constants";
 import { TimeInputGroup } from "./TimeInputGroup";
 import { DistanceInputGroup } from "./DistanceInputGroup";
@@ -20,14 +19,14 @@ export const DrawerInputGroup = ({
   onClose,
   trainingData,
 }: DrawerInputGroupProps) => {
-  const { control, handleSubmit } = useForm<TrainingUnitDataDetails>({
+  const { control, handleSubmit } = useForm<TrainingDetails>({
     defaultValues: trainingData.data ?? trainingFormInitialValues,
     mode: "all",
   });
 
   const dispatch = useAppDispatch();
 
-  const onFormSubmit = (formData: TrainingUnitDataDetails) => {
+  const onFormSubmit = (formData: TrainingDetails) => {
     dispatch(
       addTrainingData({
         result: formData,

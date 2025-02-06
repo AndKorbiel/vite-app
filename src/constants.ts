@@ -1,4 +1,4 @@
-import { TrainingPlanData, TrainingUnitDataDetails } from "./types";
+import { TrainingUnitData, TrainingDetails } from "./types/main";
 
 export const runningDistanceOptions = [
   { id: 5, label: "5 km" },
@@ -17,7 +17,7 @@ export enum TrainingUnitNumber {
   SEVEN = "trainingUnit7",
 }
 
-export const initialTableData: TrainingPlanData[] = [
+export const initialTableData: TrainingUnitData[] = [
   {
     date: "12-19.01.2025",
     [TrainingUnitNumber.ONE]: {
@@ -74,7 +74,7 @@ export const initialTableData: TrainingPlanData[] = [
   // },
 ];
 
-export const trainingFormInitialValues: TrainingUnitDataDetails = {
+export const trainingFormInitialValues: TrainingDetails = {
   distance: { kilometers: 0, meters: 0 },
   pace: { minutes: 0, seconds: 0 },
   pulse: 0,

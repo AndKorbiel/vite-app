@@ -1,16 +1,17 @@
 import { Box, FormControl, FormGroup, Typography } from "@mui/material";
-import { RHFInput } from "./RHFInput";
 import type { Control, FieldValues, Path } from "react-hook-form";
-import { CustomOnDistanceDataChange } from "../../types";
+
 import { RHFAutocomplete } from "./RHFAutocomplete";
+import { RHFInput } from "./RHFInput";
 import { runningDistanceOptions } from "../../constants";
+import { DistanceCalcOnChange } from "../../types/inputsData";
 
 type DistanceInputGroupProps<T extends FieldValues> = {
   control: Control<T>;
   displayDistanceOptions?: boolean;
   label: string;
   namePrefix: string;
-  onChange?: CustomOnDistanceDataChange;
+  onChange?: DistanceCalcOnChange;
 };
 
 export const DistanceInputGroup = <T extends FieldValues>({

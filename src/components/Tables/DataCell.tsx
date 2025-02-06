@@ -1,10 +1,11 @@
 import { Box, TableCell, Typography } from "@mui/material";
-import { TrainingUnitDrawerFormData } from "../../types";
+
 import { useDisplayEditButton } from "./useDisplayEditButton";
+import { TrainingUnitDrawerFormData } from "../../types/inputsData";
 
 type DataCellProps = {
   showEditButton?: boolean;
-  trainingUnitData: TrainingUnitDrawerFormData;
+  TrainingData: TrainingUnitDrawerFormData;
 };
 
 const renderPlaceHolderLabel = (label?: string) => (
@@ -20,17 +21,14 @@ const getValueOrDefault = (value?: number) => {
   return value === 0 ? "00" : value;
 };
 
-export const DataCell = ({
-  showEditButton,
-  trainingUnitData,
-}: DataCellProps) => {
+export const DataCell = ({ showEditButton, TrainingData }: DataCellProps) => {
   const { EditButton, handleMouseEnter, handleMouseLeave } =
     useDisplayEditButton();
 
-  if (!trainingUnitData.data)
+  if (!TrainingData.data)
     return <TableCell>{renderPlaceHolderLabel()}</TableCell>;
 
-  const { distance, pace, pulse, time } = trainingUnitData.data;
+  const { distance, pace, pulse, time } = TrainingData.data;
 
   const timeValue = `${getValueOrDefault(time?.hours)}:${getValueOrDefault(
     time?.minutes
@@ -72,7 +70,7 @@ export const DataCell = ({
         </Box>
       ))}
 
-      {showEditButton && <EditButton trainingUnitData={trainingUnitData} />}
+      {showEditButton && <EditButton TrainingData={TrainingData} />}
     </TableCell>
   );
 };

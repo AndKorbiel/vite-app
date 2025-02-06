@@ -1,9 +1,10 @@
 import { useState } from "react";
+
 import { Drawer } from "../Drawer";
-import { TrainingUnitDrawerFormData } from "../../types";
+import { TrainingUnitDrawerFormData } from "../../types/inputsData";
 
 type EditButtonProps = {
-  trainingUnitData: TrainingUnitDrawerFormData;
+  TrainingData: TrainingUnitDrawerFormData;
 };
 
 export const useDisplayEditButton = () => {
@@ -17,14 +18,14 @@ export const useDisplayEditButton = () => {
     setIsHovered(false);
   };
 
-  const EditButton = ({ trainingUnitData }: EditButtonProps) => {
+  const EditButton = ({ TrainingData }: EditButtonProps) => {
     return (
       isHovered && (
         <Drawer
           data={{
-            data: trainingUnitData.data,
-            rowId: trainingUnitData.rowId,
-            weekId: trainingUnitData.weekId as number,
+            data: TrainingData.data,
+            rowId: TrainingData.rowId,
+            weekId: TrainingData.weekId as number,
           }}
           displayOnOhver
           label="Edit"

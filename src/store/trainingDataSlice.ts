@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "./store";
 import { initialTableData, TrainingUnitNumber } from "../constants";
-import { TrainingUnitDataDetails } from "../types";
+import { TrainingDetails } from "../types/main";
 
 type TrainingResultPayload = {
-  result: TrainingUnitDataDetails | null;
+  result: TrainingDetails | null;
   trainingUnit: TrainingUnitNumber;
   weekId: number;
 };

@@ -1,12 +1,15 @@
 import { Autocomplete, TextField } from "@mui/material";
 import { Control, Controller, FieldPath, FieldValues } from "react-hook-form";
-import { AutocompleteOption, CustomOnDistanceDataChange } from "../../types";
+import {
+  AutocompleteOption,
+  DistanceCalcOnChange,
+} from "../../types/inputsData";
 
 type RHFAutocompleteProps<T extends FieldValues> = {
   control: Control<T>;
   label: string;
   name: FieldPath<T>;
-  onChange?: CustomOnDistanceDataChange;
+  onChange?: DistanceCalcOnChange;
   options: AutocompleteOption[];
 };
 

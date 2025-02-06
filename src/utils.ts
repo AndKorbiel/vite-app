@@ -1,10 +1,6 @@
 import { TrainingUnitNumber } from "./constants";
-import {
-  DistanceInputData,
-  PaceInputData,
-  TrainingPlanData,
-  TrainingUnitData,
-} from "./types";
+import { DistanceInputData, PaceInputData } from "./types/inputsData";
+import { TrainingUnitData, TrainingData } from "./types/main";
 
 export const calculateDistance = (data: DistanceInputData): string => {
   const { pace: givenPace, time: givenTime } = data;
@@ -51,8 +47,8 @@ export const calculatePace = (data: PaceInputData): string => {
   return "0:00 min / km";
 };
 
-export const sortTableData = (data: TrainingPlanData) => {
-  const sortOrder: Array<keyof TrainingPlanData> = [
+export const sortTableData = (data: TrainingUnitData) => {
+  const sortOrder: Array<keyof TrainingUnitData> = [
     "weekId",
     "date",
     TrainingUnitNumber.ONE,
@@ -60,10 +56,8 @@ export const sortTableData = (data: TrainingPlanData) => {
     TrainingUnitNumber.THREE,
   ];
 
-  const sortedData: Record<
-    string,
-    TrainingUnitData | string | number | undefined
-  > = {};
+  const sortedData: Record<string, TrainingData | string | number | undefined> =
+    {};
 
   sortOrder.forEach((key) => {
     sortedData[key] = data[key];

@@ -1,11 +1,12 @@
 import { Box, Button, Drawer as MuiDrawer, styled } from "@mui/material";
 import { useState } from "react";
+
+import { AlertDialog } from "./AlertDialog";
 import { DrawerInputGroup } from "./Inputs/DrawerInputGroup";
-import { TrainingUnitDrawerFormData } from "../types";
 import { useAppDispatch } from "../store/hooks";
 import { addTrainingData } from "../store/trainingDataSlice";
 import { TrainingUnitNumber } from "../constants";
-import { AlertDialog } from "./AlertDialog";
+import { TrainingUnitDrawerFormData } from "../types/inputsData";
 
 const StyledDrawer = styled(MuiDrawer)(() => ({
   width: "300px",

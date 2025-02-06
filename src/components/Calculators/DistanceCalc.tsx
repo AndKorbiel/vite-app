@@ -1,10 +1,11 @@
-import { Button, Card, CardContent, Divider, Typography } from "@mui/material";
-import { TimeInputGroup } from "../Inputs/TimeInputGroup";
-import { CalculationResult } from "../CalculationResult";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { DistanceInputData } from "../../types";
+import { Button, Card, CardContent, Divider, Typography } from "@mui/material";
+
+import { TimeInputGroup } from "../Inputs/TimeInputGroup";
+import { CalculationResult } from "../CalculationResult";
 import { calculateDistance } from "../../utils";
+import { DistanceInputData } from "../../types/inputsData";
 
 const distanceCalcFormInitialValues: DistanceInputData = {
   pace: { minutes: 0, seconds: 0 },

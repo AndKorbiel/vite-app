@@ -1,12 +1,13 @@
 import { Fragment } from "react/jsx-runtime";
-import { TrainingPlanData } from "../../types";
-import { sortTableData } from "../../utils";
 import { TableCell } from "@mui/material";
+
+import { sortTableData } from "../../utils";
 import { Drawer } from "../Drawer";
 import { DataCell } from "./DataCell";
+import { TrainingUnitData } from "../../types/main";
 
 export const useGenerateTabledData = () => {
-  const renderTableData = (data: TrainingPlanData) => {
+  const renderTableData = (data: TrainingUnitData) => {
     const sortedData = sortTableData(data);
 
     return Object.entries(sortedData).map((trainingData, i) => {
@@ -14,7 +15,7 @@ export const useGenerateTabledData = () => {
         return (
           <Fragment key={i + trainingData[0]}>
             <DataCell
-              trainingUnitData={{
+              TrainingData={{
                 data: trainingData[1].plan,
                 rowId: trainingData[0],
                 weekId: sortedData.weekId as number,
@@ -23,7 +24,7 @@ export const useGenerateTabledData = () => {
             {trainingData[1].result ? (
               <DataCell
                 showEditButton
-                trainingUnitData={{
+                TrainingData={{
                   data: trainingData[1].result,
                   rowId: trainingData[0],
                   weekId: sortedData.weekId as number,
